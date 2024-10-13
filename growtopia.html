@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Growtopia</title>
+    <link rel="icon" href="slider1.jpg">
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 80%;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
+            max-width: 1200px;
+        }
+
+        /* Game Info Section */
+        .game-info {
+            text-align: center;
+        }
+
+        .game-info img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .game-info h2 {
+            margin: 15px 0;
+            font-size: 2rem;
+        }
+
+        .game-info p {
+            font-size: 1.2rem;
+            color: #00ff80;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #00ff80;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #00ff80;
+        }
+
+        .form-section input {
+            width: 100%;
+            max-width: 493px;
+            box-sizing: border-box;
+            padding: 12px;
+            font-size: 1.2rem;
+            border: 2px solid #00ff80;
+            border-radius: 8px;
+            background-color: #1a1a1a;
+            color: #fff;
+            outline: none;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .form-section input:focus {
+            border-color: #00ff80;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.8);
+        }
+
+        .form-section input::placeholder {
+            color: #aaa;
+        }
+
+        .form-section .diamondlock-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .diamondlock-container div {
+            background-color: #1a1a1a;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid #00ff80;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .diamondlock-container div:hover {
+            background-color: #00ff80;
+            color: #0d0d0d;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
+        }
+
+        .diamondlock-container div.selected {
+            background-color: #00ff80;
+            color: #0d0d0d;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.8);
+        }
+
+        .diamondlock-container img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .diamondlock-container span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .diamondlock-container div.selected::after {
+            content: '✔';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .form-section button {
+            padding: 12px;
+            width: 100%;
+            background-color: #00ff80;
+            border: none;
+            border-radius: 5px;
+            color: #0d0d0d;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-section button:hover {
+            background-color: #008f5a;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .container {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .form-section input,
+            .form-section button {
+                padding: 8px;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+
+            .game-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .game-info p {
+                font-size: 1rem;
+            }
+
+            .diamondlock-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Game Info -->
+    <div class="game-info">
+        <img src="https://i.ibb.co.com/x73SzBQ/growtopia.jpg" alt="Banner Game">
+        <h2>Growtopia</h2>
+        <p>Top up Diamondlock untuk game Growtopia. 1 Diamondlock setara dengan 4000. Khusus Growtopia ditanggung oleh Marco Julius Andreas Bakkara.</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+        <form id="topUpForm" onsubmit="submitForm(event)">
+            <label for="growId">GrowID</label>
+            <input type="text" id="growId" placeholder="Masukkan GrowID Anda" required pattern="^[A-Za-z0-9]+$" title="GrowID hanya boleh menggunakan huruf dan angka, tanpa spasi.">
+
+            <label>Pilih Diamondlock</label>
+            <div class="diamondlock-container" id="diamondlockContainer">
+                <div data-value="1">
+                    <img src="https://i.ibb.co.com/7Jc3VJ2/diamonglock-removebg-preview.png" alt="Diamondlock">
+                    <span>1 Diamondlock - Rp 4.000</span>
+                </div>
+                <div data-value="5">
+                    <img src="https://i.ibb.co.com/7Jc3VJ2/diamonglock-removebg-preview.png" alt="Diamondlock">
+                    <span>5 Diamondlock - Rp 20.000</span>
+                </div>
+                <div data-value="10">
+                    <img src="https://i.ibb.co.com/7Jc3VJ2/diamonglock-removebg-preview.png" alt="Diamondlock">
+                    <span>10 Diamondlock - Rp 40.000</span>
+                </div>
+                <div data-value="20">
+                    <img src="https://i.ibb.co.com/7Jc3VJ2/diamonglock-removebg-preview.png" alt="Diamondlock">
+                    <span>20 Diamondlock - Rp 80.000</span>
+                </div>
+            </div>
+
+            <button type="submit">Bayar Sekarang</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const diamondlockContainer = document.getElementById('diamondlockContainer');
+    let selectedValue = '';
+
+    diamondlockContainer.addEventListener('click', function (event) {
+        const clickedItem = event.target.closest('div');
+        if (!clickedItem) return;
+
+        // Remove selected class from all items
+        document.querySelectorAll('.diamondlock-container div').forEach(item => {
+            item.classList.remove('selected');
+        });
+
+        // Add selected class to the clicked item
+        clickedItem.classList.add('selected');
+        selectedValue = clickedItem.getAttribute('data-value');
+    });
+
+    function submitForm(event) {
+        event.preventDefault();
+        
+        const growId = document.getElementById('growId').value;
+
+        const whatsappNumber = '6283117012361';
+        const message = `Halo, saya ingin Top Up Growtopia dengan detail berikut:\n\n` +
+                        `GrowID: ${growId}\n` +
+                        `Jumlah Diamondlock: ${selectedValue}\n\n` +
+                        `Mohon dilanjutkan serta diproses ya min.`;
+
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+</script>
+
+</body>
+</html>

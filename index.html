@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiamondGame</title>
+  <link rel="icon" href="slider1.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <!-- Navbar -->
+   <div class="navbar">
+    <div class="logo"><a href="#">DmGame</a></div>
+    <div class="menu">
+        <a href="index.html">Beranda</a>
+        <a href="about.html">Tentang</a>
+</div>
+<div class="burger-menu" onclick="toggleMenu(this)">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+
+<!-- Overlay untuk burger menu -->
+<div class="overlay" onclick="toggleMenu(document.querySelector('.burger-menu'))"></div>
+
+<!-- Slider -->
+<div class="slider-wrapper">
+<div class="slider-container">
+    <div class="slides">
+        <div class="slide"><img src="slider1.jpg"></div>
+        <div class="slide"><img src="background.jpg.png" alt="Slide 3"></div>
+    </div>
+</div>
+</div>
+
+<!-- Promosi Section -->
+<div class="promosi-wrapper">
+<div class="promosi-content">
+    <h2>DmGame</h2>
+    <p>Raih kesempatanmu untuk menang besar dengan berbagai game seru yang kami tawarkan. Jangan lewatkan promosi menarik dan bonus besar yang bisa kamu dapatkan setiap hari!</p>
+</div>
+</div>
+
+<!-- Game Menu -->
+<div class="game-menu">
+<h2>Pilihan Game Terbaik</h2>
+<div class="note-wrapper" id="note">
+  <div class="note-content">
+      <p>Note: Website ini masih memproses <br> transaksi secara manual, maka berhati-hatilah!</p>
+  </div>
+  <button class="close-btn" id="closeNoteBtn">✖</button>
+</div>
+
+<button class="question-btn" id="questionBtn">?</button>
+<div class="game-grid">
+    <div class="game-item">
+        <div class="image-box">
+            <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co.com/WxGkd6Z/freefire.jpg" alt="freefire" border="0"></a>" alt="Game 1">
+        </div>
+        <p>Free Fire: Battle Royale</p>
+        <a href="freefire.html" class="top-up-btn">Top Up</a>
+    </div>
+    <div class="game-item">
+        <div class="image-box">
+            <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co.com/nzPfhWY/mobilejen.jpg" alt="mobilejen" border="0"></a>" alt="Game 2">
+        </div>
+        <p>Game Mobile Legends</p>
+        <a href="mobilelegend.html" class="top-up-btn">Top Up</a>
+    </div>
+    <div class="game-item">
+        <div class="image-box">
+            <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co.com/TrXfHrz/gtopia.jpg" alt="gtopia" border="0"></a>" alt="Game 3">
+        </div>
+        <p>Growtopia: Pixel Game</p>
+        <a href="growtopia.html" class="top-up-btn">Top Up</a>
+    </div>
+    <div class="game-item">
+        <div class="image-box">
+            <img src="https://i.ibb.co.com/cC1W3QK/segerahadir.jpg" alt="Game 4">
+        </div>
+        <p>Segera Hadir</p>
+        <a href="#" class="top-up-btn">Jangan Klik</a>
+    </div>
+</div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+<div class="footer-container">
+    <div class="footer-logo">
+        <h2>DmGame</h2>
+    </div>
+    <div class="footer-description">
+        <p>DiamondGame merupakan website yang di design (UI) oleh pelajar SMK Negeri 1 Pematangsiantar,<br> Marco Julius Andreas, dan segala aktivitas pengguna telah diatur oleh Dhira Ahmad Zeyga.</p>
+    </div>
+    <div class="footer-links">
+        <h4>Link Cepat</h4>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="about.html">Tentang</a></li>
+        </ul>
+    </div>
+</div>
+</footer>
+
+<!-- Sosial Media Bubble -->
+<div class="social-bubble" id="socialBubble">Sosmed</div>
+
+<!-- Ikon Sosial Media -->
+<div class="social-icons" id="socialIcons">
+<a href="https://wa.me/your-whatsapp-number" target="_blank">
+    <img src="https://i.ibb.co.com/64HCnQQ/whatsapp-removebg-preview.png" alt="WhatsApp">
+</a>
+<a href="https://instagram.com/your-instagram-handle" target="_blank">
+    <img src="https://i.ibb.co.com/3y4Ffds/instagram-removebg-preview-1.png" alt="Instagram">
+</a>
+<a href="https://twitter.com/your-twitter-handle" target="_blank">
+    <img src="https://i.ibb.co.com/R3gtN95/discord-removebg-preview.png" alt="Discord">
+</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

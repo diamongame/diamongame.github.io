@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiamondGame - Tentang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(13, 13, 13, 0.9);
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #00ff80;
+        }
+
+        /* Burger Menu Styling */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .menu.active {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .menu.active {
+                display: block;
+            }
+        }
+
+        /* About Section Styling */
+        .about-section {
+            margin-top: 100px;
+            padding: 50px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            color: #00ff80;
+            text-transform: uppercase;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Decorative Element */
+        .about-section::before {
+            content: "";
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, #00ff80, #ff00ff);
+            border-radius: 10px;
+            animation: slideIn 2s ease-in-out infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+   <!-- Navbar -->
+   <div class="navbar">
+       <div class="logo"><a href="#">DmGame</a></div>
+       <div class="menu">
+           <a href="index.html">Beranda</a>
+           <a href="about.html">Tentang</a>
+       </div>
+       <div class="burger-menu" onclick="toggleMenu(this)">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+   </div>
+
+   <!-- Overlay for Burger Menu -->
+   <div class="overlay" onclick="toggleMenu(document.querySelector('.burger-menu'))"></div>
+
+   <!-- About Section -->
+   <section class="about-section">
+       <h1>Tentang Kami</h1>
+       <p>Website ini mulai dikembangkan sejak 12/10/2024. Tim kami sangat bertanggungjawab akan segala transaksi yang ada dan menerima 24 jam pelaporan terkait masalah-masalah yang akan didapati oleh pelanggan dengan cara menekan tombol, "sosmed" untuk mendapatkan sosial media kami untuk melapor.</p>
+   </section>
+
+   <script>
+       function toggleMenu(burgerMenu) {
+           const menu = document.querySelector('.menu');
+           const overlay = document.querySelector('.overlay');
+           burgerMenu.classList.toggle('active');
+           menu.classList.toggle('active');
+           overlay.classList.toggle('active');
+       }
+   </script>
+</body>
+</html>

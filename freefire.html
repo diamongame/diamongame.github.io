@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Game</title>
+    <link rel="icon" href="slider1.jpg">
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 80%;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
+        }
+
+        .game-info {
+            text-align: center;
+        }
+
+        .game-info img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .game-info h2 {
+            margin: 15px 0;
+            font-size: 2rem;
+        }
+
+        .game-info p {
+            font-size: 1.2rem;
+            color: #00ff80;
+        }
+
+        .form-section {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #00ff80;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .form-section input,
+        .form-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #00ff80;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .form-section .id-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-section .id-container input {
+            flex: 1;
+        }
+
+        .form-section button {
+            padding: 12px;
+            width: 100%;
+            background-color: #00ff80;
+            border: none;
+            border-radius: 5px;
+            color: #0d0d0d;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-section button:hover {
+            background-color: #008f5a;
+        }
+
+        .nickname {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #00ff80;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .container {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .form-section input,
+            .form-section select,
+            .form-section button {
+                padding: 8px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+
+            .game-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .game-info p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="game-info">
+        <img src="https://i.ibb.co.com/MBVcRBg/freefire.jpg" alt="Banner Game">
+        <h2>Free Fire: Battle Royales</h2>
+        <p>Free Fire: Battle Royales adalah game Battleshot multi-tembak 50v pemain yang kompatibel pada berbagai smartphone, laptop. maupun PC.</p>
+    </div>
+
+    <div class="form-section">
+        <form id="topUpForm" onsubmit="submitForm(event)">
+            <label for="userId">User ID</label>
+            <div class="id-container">
+                <input type="text" id="userId" placeholder="User ID (min 7 angka)" required pattern="\d{7,}">
+            </div>
+            
+            <label for="purchaseType">Tipe Pembelian</label>
+            <select id="purchaseType" onchange="updateDiamondOptions()" required>
+                <option value="membership">Membership</option>
+                <option value="diamondKecil">Diamond Kecil</option>
+                <option value="diamondBesar">Diamond Besar</option>
+            </select>
+
+            <label for="diamond">Jumlah Pembelian</label>
+            <select id="diamond" required>
+                <!-- Options will be dynamically populated -->
+            </select>
+
+            <label for="paymentMethod">Metode Pembayaran</label>
+            <select id="paymentMethod" required>
+                <option value="ovo">OVO</option>
+                <option value="gopay">GoPay</option>
+                <option value="dana">Dana</option>
+            </select>
+
+            <label for="paymentProof">Bukti Pembayaran</label>
+            <input type="file" id="paymentProof" accept="image/*" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <button type="submit">Bayar Sekarang</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const membershipOptions = [
+        { value: 'mingguan', text: 'Membership Mingguan - Rp28.000' },
+        { value: 'bulanan', text: 'Membership Bulanan - Rp83.000' }
+    ];
+
+    const diamondKecilOptions = [
+        { value: '5', text: '5 Diamond - Rp1.000' },
+        { value: '12', text: '12 Diamond - Rp1.900' },
+        { value: '50', text: '50 Diamond - Rp7.700' },
+        { value: '70', text: '70 Diamond - Rp9.500' },
+        { value: '140', text: '140 Diamond - Rp19.230' },
+        { value: '355', text: '355 Diamond - Rp47.500' },
+        { value: '720', text: '720 Diamond - Rp96.500' }
+    ];
+
+    const diamondBesarOptions = [
+        { value: '1450', text: '1450 Diamond - Rp186.230' },
+        { value: '2180', text: '2180 Diamond - Rp274.000' },
+        { value: '3640', text: '3640 Diamond - Rp465.399' },
+        { value: '7290', text: '7290 Diamond - Rp918.000' }
+    ];
+
+    function updateDiamondOptions() {
+        const purchaseType = document.getElementById('purchaseType').value;
+        const diamondSelect = document.getElementById('diamond');
+
+        let options = [];
+        if (purchaseType === 'membership') {
+            options = membershipOptions;
+        } else if (purchaseType === 'diamondKecil') {
+            options = diamondKecilOptions;
+        } else if (purchaseType === 'diamondBesar') {
+            options = diamondBesarOptions;
+        }
+
+        // Clear previous options
+        diamondSelect.innerHTML = '';
+
+        // Add new options
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option.value;
+            opt.textContent = option.text;
+            diamondSelect.appendChild(opt);
+        });
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        
+        const userId = document.getElementById('userId').value;
+        const purchaseType = document.getElementById('purchaseType').value;
+        const diamond = document.getElementById('diamond').value;
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const email = document.getElementById('email').value;
+
+        const purchaseTypeText = document.getElementById('purchaseType').options[document.getElementById('purchaseType').selectedIndex].text;
+        const diamondText = document.getElementById('diamond').options[document.getElementById('diamond').selectedIndex].text;
+        const paymentMethodText = document.getElementById('paymentMethod').options[document.getElementById('paymentMethod').selectedIndex].text;
+
+        // Pesan yang akan dikirim ke WhatsApp
+        const message = `Halo Admin, saya ingin melakukan top up dengan detail berikut:\n\nUser ID: ${userId}\nPembelian: ${purchaseTypeText}\nJumlah: ${diamondText}\nMetode Pembayaran: ${paymentMethodText}\nEmail: ${email}\n\nMohon dilanjutkan serta diproses ya min.`;
+
+        // Mengirim pesan ke WhatsApp
+        const whatsappUrl = `https://wa.me/6283110301737?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+</body>
+</html>
